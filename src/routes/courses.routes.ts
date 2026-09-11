@@ -5,12 +5,13 @@ import {
     postProduct,
     deleteProduct,
     getProductsStats
-} from '@/controllers/Courses.controler.js';
+} from '../controllers/Courses.controler.js';
 
 
 
-import { validate } from '@/middlewares/validate.js';
-import { createCourseSchema } from '@/scema/scema.js';
+import { validate } from '../middlewares/validate.js';
+import { createCourseSchema } from '../scema/scema.js';
+
 
 const router = Router();
 

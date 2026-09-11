@@ -1,6 +1,6 @@
 
-import { pool } from '@/data/db.js';
-import { sendError, sendSuccess } from '@/utils/apiHelpers.js';
+import { pool } from '../data/db.js';
+import { sendError, sendSuccess } from '../utils/apiHelpers.js';
 import type { ErrorRequestHandler, Request, Response } from 'express';
 
 

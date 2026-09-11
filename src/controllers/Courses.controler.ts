@@ -1,8 +1,7 @@
 import type { Request, Response } from 'express';
-import { pool } from '@/data/db.js';
-import { sendError, sendSuccess } from '@/utils/apiHelpers.js';
+import { pool } from '../data/db.js'
+import { sendError, sendSuccess } from '../utils/apiHelpers.js';
 
-// 1️⃣ جلب كافة المنتجات مع Pagination + Search
 export const getAllProducts = async (req: Request, res: Response) => {
     try {
         const page = parseInt(req.query.page as string) || 1;
@@ -18,12 +17,10 @@ export const getAllProducts = async (req: Request, res: Response) => {
             queryParams.push(`%${search}%`);
         }
 
-        // استعلام لعد إجمالي البيانات المطابقة (عشان نحسب TotalPages)
         const countQuery = `SELECT COUNT(*) FROM products ${whereClause};`;
         const countResult = await pool.query(countQuery, queryParams);
         const totalProducts = parseInt(countResult.rows[0].count);
 
-        // استعلام لجلب الصفحات المحددة (Pagination Query)
         const dataQuery = `
             SELECT * FROM products 
             ${whereClause} 
@@ -54,7 +51,6 @@ export const getAllProducts = async (req: Request, res: Response) => {
     }
 };
 
-// 2️⃣ جلب منتج محدد بـ ID
 export const getProductById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -70,7 +66,6 @@ export const getProductById = async (req: Request, res: Response) => {
     }
 };
 
-// 3️⃣ إضافة منتج جديد (POST)
 export const postProduct = async (req: Request, res: Response) => {
     try {
         const { id, name, description, price, stock } = req.body;
@@ -89,7 +84,6 @@ export const postProduct = async (req: Request, res: Response) => {
     }
 };
 
-// 4️⃣ حذف منتج (DELETE)
 export const deleteProduct = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -105,7 +99,6 @@ export const deleteProduct = async (req: Request, res: Response) => {
     }
 };
 
-// 5️⃣ إحصائيات عامة عن المنتجات (Analytics/Stats Overview)
 export const getProductsStats = async (req: Request, res: Response) => {
     try {
         const statsQuery = `

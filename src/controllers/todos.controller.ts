@@ -1,5 +1,5 @@
-import { pool } from '@/data/db.js';
-import { sendError, sendSuccess } from '@/utils/apiHelpers.js';
+import { pool } from '../data/db.js';
+import { sendError, sendSuccess } from '../utils/apiHelpers.js';
 import type { Request, Response } from 'express';
 
 export const getTodoById = async (req: Request, res: Response) => {

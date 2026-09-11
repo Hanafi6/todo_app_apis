@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 
-import { getAllTabs, patchTab, postTab, deleteTab, getTabById } from '@/controllers/tabs.controls.js'
+import { getAllTabs, patchTab, postTab, deleteTab, getTabById } from '../controllers/tabs.controls.js'
 
 const router = Router();
 
