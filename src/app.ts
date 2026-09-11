@@ -19,6 +19,6 @@ app.use('/api/todos', todosRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-    console.log(env.DB_NAME)
-});
 
+});
+export default app;
