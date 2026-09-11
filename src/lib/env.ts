@@ -8,11 +8,7 @@ export const env = createEnv({
             .enum(['development', 'test', 'production'])
             .default('development'),
         PORT: z.coerce.number().default(3000),
-        DB_USER: z.string().min(1, 'Database user is required'),
-        DB_PASSWORD: z.string().min(1, 'Database password is required'),
-        DB_HOST: z.string().default('localhost'),
-        DB_PORT: z.coerce.number().default(5432),
-        DB_NAME: z.string().min(1, 'Database name is required'),
+        DATABASE_URL: z.string().url('Invalid Postgres Connection String'),
     },
 
     runtimeEnv: process.env,
